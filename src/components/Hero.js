@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from './ui/button';
 import { ArrowDown, Download, ExternalLink } from 'lucide-react';
 import { personalInfo, socialLinks } from '../mock';
+import ResumePDF from '../assets/Sidgureja.pdf';
 
 const Hero = () => {
   const scrollToAbout = () => {
@@ -41,8 +42,8 @@ const Hero = () => {
           {/* Status Badge */}
           <div className="inline-flex items-center px-5 py-2.5 rounded-full glass border border-border text-sm font-medium">
             <span className="relative flex h-2.5 w-2.5 mr-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-foreground/60 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-foreground"></span>
             </span>
             <span className="text-foreground">Available for new opportunities</span>
           </div>
@@ -82,9 +83,12 @@ const Hero = () => {
               variant="outline"
               size="lg"
               className="group px-8 py-6 font-medium text-base transition-all hover:scale-105"
+              asChild
             >
-              Download CV
-              <Download className="ml-2 h-5 w-5 group-hover:translate-y-0.5 transition-transform" />
+              <a href={ResumePDF} download="Siddhant_Gureja_Resume.pdf">
+                Download CV
+                <Download className="ml-2 h-5 w-5 group-hover:translate-y-0.5 transition-transform" />
+              </a>
             </Button>
           </div>
 
