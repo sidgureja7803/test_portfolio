@@ -2,12 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Import Google Fonts for premium typography */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+/* Import Professional Google Fonts - Clean and Classy */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
 
-/* Native smooth scrolling */
+/* Smooth scrolling will be handled by Lenis */
 html {
-  scroll-behavior: smooth;
   overflow-x: hidden;
 }
 
@@ -18,21 +17,18 @@ html {
 
 body {
   margin: 0;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-    "Helvetica Neue", sans-serif;
+  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: 'Space Grotesk', source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  font-family: 'IBM Plex Mono', source-code-pro, Menlo, Monaco, Consolas, monospace;
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -41,7 +37,7 @@ code {
 
 ::-webkit-scrollbar-thumb {
   background: hsl(var(--primary) / 0.3);
-  border-radius: 5px;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -65,7 +61,7 @@ code {
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 47.4% 11.2%;
 
-    /* Primary - Vibrant Blue */
+    /* Primary - Professional Blue */
     --primary: 221.2 83.2% 53.3%;
     --primary-foreground: 210 40% 98%;
 
@@ -77,9 +73,9 @@ code {
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    /* Accent - Purple Touch */
-    --accent: 270 60% 96%;
-    --accent-foreground: 270 60% 20%;
+    /* Accent */
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
 
     /* Destructive */
     --destructive: 0 84.2% 60.2%;
@@ -97,54 +93,54 @@ code {
     --chart-4: 210 98% 78%;
     --chart-5: 212 97% 87%;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
   }
 
   /* ========== DARK THEME ========== */
   .dark {
-    /* Background & Foreground - Deep Space */
-    --background: 222 47% 11%;
-    --foreground: 210 40% 98%;
+    /* Background & Foreground - Neutral Dark Gray */
+    --background: 240 10% 8%;
+    --foreground: 0 0% 98%;
 
     /* Card - Elevated Surface */
-    --card: 222 47% 15%;
-    --card-foreground: 210 40% 98%;
+    --card: 240 8% 12%;
+    --card-foreground: 0 0% 98%;
 
     /* Popover */
-    --popover: 222 47% 11%;
-    --popover-foreground: 215 20.2% 65.1%;
+    --popover: 240 10% 8%;
+    --popover-foreground: 240 5% 84%;
 
-    /* Primary - Electric Blue */
-    --primary: 217 91% 60%;
-    --primary-foreground: 222 47% 11%;
+    /* Primary - Sophisticated Emerald */
+    --primary: 142 76% 56%;
+    --primary-foreground: 0 0% 100%;
 
     /* Secondary */
-    --secondary: 217 33% 17%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 240 6% 16%;
+    --secondary-foreground: 0 0% 98%;
 
     /* Muted */
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 240 6% 16%;
+    --muted-foreground: 240 5% 65%;
 
-    /* Accent - Vibrant Purple */
-    --accent: 270 70% 60%;
-    --accent-foreground: 210 40% 98%;
+    /* Accent */
+    --accent: 240 6% 16%;
+    --accent-foreground: 0 0% 98%;
 
     /* Destructive */
-    --destructive: 0 62.8% 50.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
 
     /* Border, Input, Ring */
-    --border: 217 33% 22%;
-    --input: 217 33% 22%;
-    --ring: 217 91% 60%;
+    --border: 240 6% 20%;
+    --input: 240 6% 20%;
+    --ring: 142 76% 56%;
 
-    /* Chart Colors - Vibrant */
-    --chart-1: 217 91% 60%;
+    /* Chart Colors */
+    --chart-1: 142 76% 56%;
     --chart-2: 173 80% 55%;
-    --chart-3: 280 85% 65%;
-    --chart-4: 340 82% 52%;
-    --chart-5: 48 96% 53%;
+    --chart-3: 197 92% 61%;
+    --chart-4: 43 96% 56%;
+    --chart-5: 27 96% 61%;
   }
 
   /* ========== OCEAN THEME ========== */
@@ -161,7 +157,7 @@ code {
     --popover: 200 80% 8%;
     --popover-foreground: 180 25% 80%;
 
-    /* Primary - Aqua Glow */
+    /* Primary - Aqua */
     --primary: 180 85% 55%;
     --primary-foreground: 200 80% 8%;
 
@@ -173,9 +169,9 @@ code {
     --muted: 195 60% 18%;
     --muted-foreground: 180 25% 70%;
 
-    /* Accent - Teal */
-    --accent: 165 75% 50%;
-    --accent-foreground: 200 80% 8%;
+    /* Accent */
+    --accent: 195 60% 18%;
+    --accent-foreground: 180 25% 95%;
 
     /* Destructive */
     --destructive: 0 70% 55%;
@@ -196,7 +192,7 @@ code {
 
   /* ========== SUNSET THEME ========== */
   .sunset {
-    /* Background - Warm Dusk */
+    /* Background - Warm Evening */
     --background: 25 60% 12%;
     --foreground: 30 25% 95%;
 
@@ -220,9 +216,9 @@ code {
     --muted: 30 50% 20%;
     --muted-foreground: 30 25% 70%;
 
-    /* Accent - Rose Gold */
-    --accent: 340 75% 60%;
-    --accent-foreground: 25 60% 12%;
+    /* Accent */
+    --accent: 30 50% 20%;
+    --accent-foreground: 30 25% 95%;
 
     /* Destructive */
     --destructive: 0 75% 55%;
@@ -267,9 +263,9 @@ code {
     --muted: 135 40% 18%;
     --muted-foreground: 120 15% 70%;
 
-    /* Accent - Lime */
-    --accent: 85 80% 55%;
-    --accent-foreground: 140 50% 10%;
+    /* Accent */
+    --accent: 135 40% 18%;
+    --accent-foreground: 120 15% 95%;
 
     /* Destructive */
     --destructive: 0 70% 50%;
@@ -305,76 +301,42 @@ code {
   h4,
   h5,
   h6 {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 600;
   }
 }
 
-/* ========== CUSTOM ANIMATIONS ========== */
-@keyframes float {
-
-  0%,
-  100% {
-    transform: translateY(0px);
+/* ========== OPTIMIZED ANIMATIONS ========== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
 
-  50% {
-    transform: translateY(-20px);
-  }
-}
-
-@keyframes glow {
-
-  0%,
-  100% {
-    opacity: 0.5;
-  }
-
-  50% {
+  to {
     opacity: 1;
   }
 }
 
-@keyframes shimmer {
-  0% {
-    background-position: -1000px 0;
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
 
-  100% {
-    background-position: 1000px 0;
-  }
-}
-
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
 /* ========== UTILITY CLASSES ========== */
 @layer utilities {
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out;
   }
 
-  .animate-glow {
-    animation: glow 3s ease-in-out infinite;
-  }
-
-  .animate-shimmer {
-    animation: shimmer 3s linear infinite;
-  }
-
-  .animate-gradient {
-    background-size: 200% 200%;
-    animation: gradient 8s ease infinite;
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out;
   }
 
   .glass {
@@ -385,37 +347,17 @@ code {
   }
 
   .glass-strong {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.15);
   }
 
   .text-gradient {
     @apply bg-clip-text text-transparent;
     background-image: linear-gradient(to right,
         hsl(var(--primary)),
-        hsl(var(--accent)));
-  }
-
-  .text-gradient-animate {
-    @apply bg-clip-text text-transparent animate-gradient;
-    background-image: linear-gradient(90deg,
-        hsl(var(--primary)),
-        hsl(var(--accent)),
-        hsl(var(--primary)));
-  }
-
-  .card-hover {
-    @apply transition-all duration-300 hover:scale-105 hover:shadow-2xl;
-  }
-
-  .glow-primary {
-    box-shadow: 0 0 30px hsl(var(--primary) / 0.3);
-  }
-
-  .glow-accent {
-    box-shadow: 0 0 30px hsl(var(--accent) / 0.3);
+        hsl(var(--foreground)));
   }
 }
 

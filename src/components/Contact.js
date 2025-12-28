@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Card } from './ui/card';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
@@ -6,66 +6,42 @@ import { Label } from './ui/label';
 import { Textarea } from './ui/textarea';
 import { useToast } from '../hooks/use-toast';
 import { personalInfo, socialLinks } from '../mock';
-import { Mail, Phone, MapPin, Send, MessageCircle, Calendar, CheckCircle2 } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, MessageCircle, Calendar } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
+  const form = useRef();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
-  const handleInputChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = async (e) => {
+  const sendEmail = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    try {
-      // EmailJS configuration
-      // You need to replace these with your actual EmailJS credentials
-      const serviceID = process.env.REACT_APP_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID';
-      const templateID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID';
-      const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY';
-
-      await emailjs.send(
-        serviceID,
-        templateID,
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          subject: formData.subject,
-          message: formData.message,
-          to_name: 'Siddhant Gureja'
-        },
-        publicKey
-      );
-
-      toast({
-        title: "✉️ Message Sent Successfully!",
-        description: "Thank you for reaching out! I'll get back to you soon.",
+    emailjs.sendForm(
+      process.env.REACT_APP_EMAILJS_SERVICE_ID || 'service_xxxxxx',
+      process.env.REACT_APP_EMAILJS_TEMPLATE_ID || 'template_abcd123',
+      form.current,
+      process.env.REACT_APP_EMAILJS_PUBLIC_KEY || '9aBcDeFGHIJKLMN'
+    )
+      .then(() => {
+        toast({
+          title: "✉️ Message Sent Successfully!",
+          description: "Thank you for reaching out! I'll get back to you soon.",
+        });
+        form.current.reset();
+      })
+      .catch((error) => {
+        console.error('EmailJS Error:', error);
+        toast({
+          title: "❌ Failed to send message",
+          description: "Please try again or email me directly at " + personalInfo.email,
+          variant: "destructive"
+        });
+      })
+      .finally(() => {
+        setIsSubmitting(false);
       });
-
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    } catch (error) {
-      console.error('EmailJS Error:', error);
-      toast({
-        title: "❌ Failed to send message",
-        description: "Please try again or email me directly at " + personalInfo.email,
-        variant: "destructive"
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
   };
 
   const getSocialIcon = (iconName) => {
@@ -119,7 +95,7 @@ const Contact = () => {
 
             {/* Contact Methods */}
             <div className="space-y-4">
-              <Card className="p-6 glass border border-border/50 hover:border-primary/50 transition-all duration-300 group card-hover">
+              <Card className="p-6 glass border border-border/50 hover:border-primary/50 transition-all duration-300 group">
                 <div className="flex items-center">
                   <div className="w-14 h-14 bg-gradient-to-br from-primary/20 to-primary/10 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
                     <Mail className="w-6 h-6 text-primary" />
@@ -133,7 +109,7 @@ const Contact = () => {
                 </div>
               </Card>
 
-              <Card className="p-6 glass border border-border/50 hover:border-green-500/50 transition-all duration-300 group card-hover">
+              <Card className="p-6 glass border border-border/50 hover:border-green-500/50 transition-all duration-300 group">
                 <div className="flex items-center">
                   <div className="w-14 h-14 bg-gradient-to-br from-green-500/20 to-green-500/10 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
                     <Phone className="w-6 h-6 text-green-500" />
@@ -147,7 +123,7 @@ const Contact = () => {
                 </div>
               </Card>
 
-              <Card className="p-6 glass border border-border/50 hover:border-accent/50 transition-all duration-300 group card-hover">
+              <Card className="p-6 glass border border-border/50 hover:border-accent/50 transition-all duration-300 group">
                 <div className="flex items-center">
                   <div className="w-14 h-14 bg-gradient-to-br from-accent/20 to-accent/10 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
                     <MapPin className="w-6 h-6 text-accent" />
@@ -170,7 +146,7 @@ const Contact = () => {
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-12 h-12 glass border border-border/50 rounded-xl flex items-center justify-center text-$-foreground hover:text-primary hover:border-primary/50 transition-all duration-300 hover:scale-110 hover:-translate-y-1"
+                    className="w-12 h-12 glass border border-border/50 rounded-xl flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 transition-all duration-300 hover:scale-110 hover:-translate-y-1"
                   >
                     {getSocialIcon(link.icon)}
                   </a>
@@ -186,15 +162,13 @@ const Contact = () => {
               Send Message
             </h3>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form ref={form} onSubmit={sendEmail} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="name" className="text-foreground font-medium">Name</Label>
                   <Input
                     id="name"
                     name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
                     placeholder="Your full name"
                     required
                     className="border-border/50 focus:border-primary focus:ring-primary bg-background/50"
@@ -206,8 +180,6 @@ const Contact = () => {
                     id="email"
                     name="email"
                     type="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
                     placeholder="your.email@example.com"
                     required
                     className="border-border/50 focus:border-primary focus:ring-primary bg-background/50"
@@ -216,12 +188,10 @@ const Contact = () => {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="subject" className="text-foreground font-medium">Subject</Label>
+                <Label htmlFor="title" className="text-foreground font-medium">Subject</Label>
                 <Input
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleInputChange}
+                  id="title"
+                  name="title"
                   placeholder="What's this about?"
                   required
                   className="border-border/50 focus:border-primary focus:ring-primary bg-background/50"
@@ -233,8 +203,6 @@ const Contact = () => {
                 <Textarea
                   id="message"
                   name="message"
-                  value={formData.message}
-                  onChange={handleInputChange}
                   placeholder="Tell me about your project..."
                   rows={5}
                   required
@@ -244,7 +212,7 @@ const Contact = () => {
 
               <Button
                 type="submit"
-                className="w-full group text-base font-semibold py-6 shadow-lg hover:shadow-xl glow-primary"
+                className="w-full group text-base font-semibold py-6 shadow-lg hover:shadow-xl"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? (

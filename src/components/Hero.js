@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from './ui/button';
-import { ArrowDown, Download, ExternalLink, Sparkles } from 'lucide-react';
+import { ArrowDown, Download, ExternalLink } from 'lucide-react';
 import { personalInfo, socialLinks } from '../mock';
 
 const Hero = () => {
@@ -29,101 +29,74 @@ const Hero = () => {
 
   return (
     <section className="min-h-screen flex items-center justify-center pt-24 pb-16 px-6 relative overflow-hidden">
-      <div className="max-w-5xl mx-auto text-center space-y-8 relative z-10">
-        {/* Enhanced Animated Background Elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {/* Primary gradient orbs */}
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-primary/20 via-primary/10 to-transparent rounded-full blur-3xl animate-float"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-[32rem] h-[32rem] bg-gradient-to-br from-accent/20 via-accent/10 to-transparent rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] bg-gradient-to-br from-primary/10 via-accent/10 to-transparent rounded-full blur-3xl animate-glow"></div>
-
-          {/* Floating particles */}
-          {[...Array(8)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-2 h-2 bg-primary/40 rounded-full animate-float"
-              style={{
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 3}s`,
-                animationDuration: `${3 + Math.random() * 4}s`
-              }}
-            ></div>
-          ))}
+      <div className="max-w-5xl mx-auto text-center space-y-10 relative z-10">
+        {/* Subtle Background Gradient */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-30">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-primary/20 to-transparent rounded-full blur-3xl"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-br from-primary/10 to-transparent rounded-full blur-3xl"></div>
         </div>
 
         {/* Main Content */}
         <div className="space-y-8">
           {/* Status Badge */}
-          <div className="inline-flex items-center px-6 py-3 rounded-full glass border border-border text-sm font-medium animate-in fade-in-0 slide-in-from-bottom-5 duration-700 shadow-lg">
-            <span className="relative flex h-3 w-3 mr-3">
+          <div className="inline-flex items-center px-5 py-2.5 rounded-full glass border border-border text-sm font-medium">
+            <span className="relative flex h-2.5 w-2.5 mr-2.5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500 shadow-lg"></span>
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
             </span>
-            <Sparkles className="w-4 h-4 mr-2 text-primary" />
             <span className="text-foreground">Available for new opportunities</span>
           </div>
 
           {/* Name & Title */}
-          <div className="space-y-6 animate-in fade-in-0 slide-in-from-bottom-5 duration-700 delay-200">
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-tight">
-              <span className="block bg-gradient-to-r from-foreground via-foreground to-foreground/80 bg-clip-text text-transparent">
+          <div className="space-y-6">
+            <h1 className="text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tight leading-tight">
+              <span className="block text-foreground">
                 {personalInfo.name.split(' ')[0]}
               </span>
-              <span className="block text-gradient-animate mt-2">
+              <span className="block text-primary mt-2">
                 {personalInfo.name.split(' ')[1]}
               </span>
             </h1>
 
             <div className="space-y-4">
-              <p className="text-xl sm:text-2xl md:text-3xl font-semibold text-primary">
+              <p className="text-2xl sm:text-3xl font-medium text-foreground/90">
                 {personalInfo.title}
               </p>
-              <p className="text-lg sm:text-xl md:text-2xl font-light text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
                 {personalInfo.tagline}
               </p>
-            </div>
-
-            {/* Animated typing indicator */}
-            <div className="flex items-center justify-center gap-3 text-sm text-muted-foreground pt-2">
-              <div className="flex gap-1.5">
-                <span className="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
-                <span className="w-2 h-2 bg-primary rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></span>
-                <span className="w-2 h-2 bg-primary rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></span>
-              </div>
-              <span className="font-medium text-foreground">Building something amazing</span>
             </div>
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-in fade-in-0 slide-in-from-bottom-5 duration-700 delay-500 pt-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
             <Button
               size="lg"
-              className="group px-8 py-6 font-semibold text-base transition-all hover:scale-105 shadow-lg hover:shadow-2xl glow-primary"
+              className="group px-8 py-6 font-medium text-base transition-all hover:scale-105"
               onClick={scrollToAbout}
             >
               Explore My Work
-              <ArrowDown className="ml-2 h-5 w-5 group-hover:translate-y-1 transition-transform" />
+              <ArrowDown className="ml-2 h-5 w-5 group-hover:translate-y-0.5 transition-transform" />
             </Button>
             <Button
               variant="outline"
               size="lg"
-              className="group px-8 py-6 font-semibold text-base transition-all hover:scale-105 glass border-2"
+              className="group px-8 py-6 font-medium text-base transition-all hover:scale-105"
             >
               Download CV
-              <Download className="ml-2 h-5 w-5 group-hover:translate-y-1 transition-transform" />
+              <Download className="ml-2 h-5 w-5 group-hover:translate-y-0.5 transition-transform" />
             </Button>
           </div>
 
           {/* Social Links */}
-          <div className="flex items-center justify-center gap-4 pt-6 animate-in fade-in-0 slide-in-from-bottom-5 duration-700 delay-700">
+          <div className="flex items-center justify-center gap-3 pt-6">
             {socialLinks.map((link, index) => (
               <a
                 key={index}
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-4 rounded-xl glass hover:glass-strong border border-border text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-110 hover:-translate-y-2 shadow-lg hover:shadow-xl group"
+                className="p-3.5 rounded-lg glass hover:glass-strong border border-border text-muted-foreground hover:text-primary transition-all duration-200 hover:scale-110"
               >
                 {getSocialIcon(link.icon)}
                 <span className="sr-only">{link.name}</span>
@@ -133,9 +106,9 @@ const Hero = () => {
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="w-6 h-10 border-2 border-muted-foreground/40 rounded-full flex justify-center p-2">
-            <div className="w-1.5 h-3 bg-primary rounded-full animate-pulse"></div>
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+          <div className="w-6 h-10 border-2 border-muted-foreground/30 rounded-full flex justify-center p-2">
+            <div className="w-1.5 h-3 bg-muted-foreground/50 rounded-full"></div>
           </div>
         </div>
       </div>

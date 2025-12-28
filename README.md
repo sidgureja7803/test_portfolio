@@ -9,11 +9,14 @@ A modern, responsive, and beautifully designed portfolio showcasing my work as a
 ## ✨ Features
 
 - **🎨 Multiple Theme Support**: Choose from Light, Dark, Ocean, Sunset, and Forest themes
+- **🚀 Lenis Smooth Scrolling**: Buttery-smooth, professional scrolling experience
+- **📝 Professional Typography**: IBM Plex Sans for clean, corporate-quality text
 - **📱 Fully Responsive**: Optimized for all devices - desktop, tablet, and mobile
-- **🎭 Modern UI/UX**: Glassmorphism, smooth gradients, and micro-animations
-- **⚡ Performance Optimized**: Fast loading with lazy loading and code splitting
-- **🌟 Interactive Components**: Hover effects, animations, and smooth transitions
+- **🎭 Modern UI/UX**: Glassmorphism, smooth gradients, and refined animations
+- **⚡ Performance Optimized**: Fast loading with optimized animations and code
+- **🌟 Interactive Components**: Hover effects, transitions, and smooth interactions
 - **📊 LeetCode Integration**: Real-time LeetCode stats and contest ratings
+- **📧 Contact Form**: EmailJS integration for receiving messages directly
 - **🎯 SEO Optimized**: Proper meta tags, semantic HTML, and optimized content
 - **♿ Accessibility**: WCAG compliant with keyboard navigation support
 
@@ -25,7 +28,9 @@ A modern, responsive, and beautifully designed portfolio showcasing my work as a
 - **UI Components**: Radix UI + Shadcn/ui
 - **Routing**: React Router DOM 7.5.1
 - **Icons**: Lucide React 0.507.0
-- **Animations**: CSS animations + Tailwind transitions
+- **Animations**: Lenis smooth scrolling + CSS transitions
+- **Email**: EmailJS (@emailjs/browser)
+- **Typography**: IBM Plex Sans (Google Fonts)
 
 ### Development Tools
 - **Build Tool**: Create React App with CRACO
