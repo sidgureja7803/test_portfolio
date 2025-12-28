@@ -18,7 +18,7 @@ export const socialLinks = [
   { name: "LinkedIn", url: "https://linkedin.com/in/sidgureja", icon: "linkedin" },
   { name: "GitHub", url: "https://github.com/sidgureja7803", icon: "github" },
   { name: "LeetCode", url: "https://leetcode.com/u/siddhant_gureja_07/", icon: "code" },
-  { name: "Portfolio", url: "https://sidgureja.netlify.app/", icon: "globe" }
+  { name: "Portfolio", url: "https://sidgureja.dev/", icon: "globe" }
 ];
 
 export const skills = {
