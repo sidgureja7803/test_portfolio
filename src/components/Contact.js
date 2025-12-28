@@ -6,7 +6,8 @@ import { Label } from './ui/label';
 import { Textarea } from './ui/textarea';
 import { useToast } from '../hooks/use-toast';
 import { personalInfo, socialLinks } from '../mock';
-import { Mail, Phone, MapPin, Send, MessageCircle, Calendar } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, MessageCircle, Calendar, CheckCircle2 } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -29,19 +30,46 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      // EmailJS configuration
+      // You need to replace these with your actual EmailJS credentials
+      const serviceID = process.env.REACT_APP_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID';
+      const templateID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID';
+      const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY';
+
+      await emailjs.send(
+        serviceID,
+        templateID,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          to_name: 'Siddhant Gureja'
+        },
+        publicKey
+      );
+
       toast({
-        title: "Message Sent!",
-        description: "Thank you for your message. I'll get back to you soon!",
+        title: "✉️ Message Sent Successfully!",
+        description: "Thank you for reaching out! I'll get back to you soon.",
       });
+
       setFormData({ name: '', email: '', subject: '', message: '' });
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      toast({
+        title: "❌ Failed to send message",
+        description: "Please try again or email me directly at " + personalInfo.email,
+        variant: "destructive"
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 2000);
+    }
   };
 
   const getSocialIcon = (iconName) => {
-    switch(iconName) {
+    switch (iconName) {
       case 'linkedin':
         return (
           <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -60,12 +88,15 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 px-6 bg-accent/30">
-      <div className="max-w-6xl mx-auto">
+    <section id="contact" className="relative overflow-hidden">
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-accent/20 to-background"></div>
+
+      <div className="relative max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16 space-y-4">
-          <h2 className="text-3xl md:text-4xl font-light tracking-tight">
-            Get In <span className="font-normal">Touch</span>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+            Get In <span className="text-gradient">Touch</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg leading-relaxed">
             Ready to start your next project? Let's discuss how we can work together to bring your ideas to life.
@@ -76,49 +107,53 @@ const Contact = () => {
           {/* Contact Info */}
           <div className="space-y-8">
             <div>
-              <h3 className="text-xl font-semibold mb-6 flex items-center">
+              <h3 className="text-2xl font-semibold mb-4 flex items-center">
                 <MessageCircle className="w-6 h-6 mr-3 text-primary" />
                 Let's Connect
               </h3>
-              <p className="text-muted-foreground leading-relaxed mb-8">
-                I'm always interested in hearing about new opportunities and exciting projects. 
+              <p className="text-muted-foreground leading-relaxed">
+                I'm always interested in hearing about new opportunities and exciting projects.
                 Whether you have a question or just want to say hi, feel free to reach out!
               </p>
             </div>
 
             {/* Contact Methods */}
-            <div className="space-y-6">
-              <Card className="p-6 border-0 shadow-md hover:shadow-lg transition-all duration-300 group bg-card/50 backdrop-blur-sm">
+            <div className="space-y-4">
+              <Card className="p-6 glass border border-border/50 hover:border-primary/50 transition-all duration-300 group card-hover">
                 <div className="flex items-center">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+                  <div className="w-14 h-14 bg-gradient-to-br from-primary/20 to-primary/10 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
                     <Mail className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-foreground">Email</h4>
-                    <p className="text-muted-foreground">{personalInfo.email}</p>
+                    <h4 className="font-semibold text-foreground mb-1">Email</h4>
+                    <a href={`mailto:${personalInfo.email}`} className="text-muted-foreground hover:text-primary transition-colors">
+                      {personalInfo.email}
+                    </a>
                   </div>
                 </div>
               </Card>
 
-              <Card className="p-6 border-0 shadow-md hover:shadow-lg transition-all duration-300 group bg-card/50 backdrop-blur-sm">
+              <Card className="p-6 glass border border-border/50 hover:border-green-500/50 transition-all duration-300 group card-hover">
                 <div className="flex items-center">
-                  <div className="w-12 h-12 bg-green-500/10 rounded-lg flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+                  <div className="w-14 h-14 bg-gradient-to-br from-green-500/20 to-green-500/10 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
                     <Phone className="w-6 h-6 text-green-500" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-foreground">Phone</h4>
-                    <p className="text-muted-foreground">{personalInfo.phone}</p>
+                    <h4 className="font-semibold text-foreground mb-1">Phone</h4>
+                    <a href={`tel:${personalInfo.phone}`} className="text-muted-foreground hover:text-green-500 transition-colors">
+                      {personalInfo.phone}
+                    </a>
                   </div>
                 </div>
               </Card>
 
-              <Card className="p-6 border-0 shadow-md hover:shadow-lg transition-all duration-300 group bg-card/50 backdrop-blur-sm">
+              <Card className="p-6 glass border border-border/50 hover:border-accent/50 transition-all duration-300 group card-hover">
                 <div className="flex items-center">
-                  <div className="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
-                    <MapPin className="w-6 h-6 text-blue-500" />
+                  <div className="w-14 h-14 bg-gradient-to-br from-accent/20 to-accent/10 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
+                    <MapPin className="w-6 h-6 text-accent" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-foreground">Location</h4>
+                    <h4 className="font-semibold text-foreground mb-1">Location</h4>
                     <p className="text-muted-foreground">{personalInfo.location}</p>
                   </div>
                 </div>
@@ -127,15 +162,15 @@ const Contact = () => {
 
             {/* Social Links */}
             <div>
-              <h4 className="font-semibold mb-4 text-foreground">Follow Me</h4>
-              <div className="flex space-x-4">
+              <h4 className="font-semibold mb-4 text-foreground text-lg">Follow Me</h4>
+              <div className="flex flex-wrap gap-3">
                 {socialLinks.map((link, index) => (
                   <a
                     key={index}
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-12 h-12 bg-accent hover:bg-accent/80 border border-border rounded-lg flex items-center justify-center text-muted-foreground hover:text-primary transition-all duration-200 hover:scale-110 hover:-translate-y-1"
+                    className="w-12 h-12 glass border border-border/50 rounded-xl flex items-center justify-center text-$-foreground hover:text-primary hover:border-primary/50 transition-all duration-300 hover:scale-110 hover:-translate-y-1"
                   >
                     {getSocialIcon(link.icon)}
                   </a>
@@ -145,8 +180,8 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <Card className="p-8 border-0 shadow-lg bg-card/50 backdrop-blur-sm">
-            <h3 className="text-xl font-semibold mb-6 flex items-center">
+          <Card className="p-8 glass-strong border border-border/50 shadow-2xl">
+            <h3 className="text-2xl font-semibold mb-6 flex items-center">
               <Send className="w-6 h-6 mr-3 text-primary" />
               Send Message
             </h3>
@@ -154,7 +189,7 @@ const Contact = () => {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="name">Name</Label>
+                  <Label htmlFor="name" className="text-foreground font-medium">Name</Label>
                   <Input
                     id="name"
                     name="name"
@@ -162,11 +197,11 @@ const Contact = () => {
                     onChange={handleInputChange}
                     placeholder="Your full name"
                     required
-                    className="border-border focus:ring-primary"
+                    className="border-border/50 focus:border-primary focus:ring-primary bg-background/50"
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
+                  <Label htmlFor="email" className="text-foreground font-medium">Email</Label>
                   <Input
                     id="email"
                     name="email"
@@ -175,13 +210,13 @@ const Contact = () => {
                     onChange={handleInputChange}
                     placeholder="your.email@example.com"
                     required
-                    className="border-border focus:ring-primary"
+                    className="border-border/50 focus:border-primary focus:ring-primary bg-background/50"
                   />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="subject">Subject</Label>
+                <Label htmlFor="subject" className="text-foreground font-medium">Subject</Label>
                 <Input
                   id="subject"
                   name="subject"
@@ -189,12 +224,12 @@ const Contact = () => {
                   onChange={handleInputChange}
                   placeholder="What's this about?"
                   required
-                  className="border-border focus:ring-primary"
+                  className="border-border/50 focus:border-primary focus:ring-primary bg-background/50"
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="message">Message</Label>
+                <Label htmlFor="message" className="text-foreground font-medium">Message</Label>
                 <Textarea
                   id="message"
                   name="message"
@@ -203,23 +238,23 @@ const Contact = () => {
                   placeholder="Tell me about your project..."
                   rows={5}
                   required
-                  className="border-border focus:ring-primary resize-none"
+                  className="border-border/50 focus:border-primary focus:ring-primary resize-none bg-background/50"
                 />
               </div>
 
-              <Button 
-                type="submit" 
-                className="w-full group" 
+              <Button
+                type="submit"
+                className="w-full group text-base font-semibold py-6 shadow-lg hover:shadow-xl glow-primary"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? (
                   <>
-                    <div className="w-4 h-4 mr-2 border-2 border-primary-foreground border-t-transparent rounded-full animate-spin"></div>
+                    <div className="w-5 h-5 mr-2 border-2 border-primary-foreground border-t-transparent rounded-full animate-spin"></div>
                     Sending...
                   </>
                 ) : (
                   <>
-                    <Send className="w-4 h-4 mr-2 group-hover:translate-x-1 transition-transform" />
+                    <Send className="w-5 h-5 mr-2 group-hover:translate-x-1 transition-transform" />
                     Send Message
                   </>
                 )}
@@ -227,14 +262,14 @@ const Contact = () => {
             </form>
 
             {/* Quick Actions */}
-            <div className="mt-8 pt-6 border-t border-border">
-              <p className="text-sm text-muted-foreground mb-4">Prefer a quick chat?</p>
-              <div className="flex space-x-3">
-                <Button size="sm" variant="outline" className="flex-1 group">
+            <div className="mt-8 pt-6 border-t border-border/50">
+              <p className="text-sm text-muted-foreground mb-4 font-medium">Prefer a quick chat?</p>
+              <div className="flex gap-3">
+                <Button size="sm" variant="outline" className="flex-1 group glass border-border/50">
                   <Calendar className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
                   Schedule Call
                 </Button>
-                <Button size="sm" variant="outline" className="flex-1 group">
+                <Button size="sm" variant="outline" className="flex-1 group glass border-border/50">
                   <MessageCircle className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
                   WhatsApp
                 </Button>

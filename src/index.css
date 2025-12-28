@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import Google Fonts for premium typography */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
 /* Native smooth scrolling */
 html {
   scroll-behavior: smooth;
@@ -14,84 +17,415 @@ html {
 }
 
 body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-        "Helvetica Neue", sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-        monospace;
+  font-family: 'Space Grotesk', source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
 }
 
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
 
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary) / 0.3);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.5);
+}
 
 @layer base {
-  :root {
-        --background: 0 0% 100%;
-        --foreground: 222.2 47.4% 11.2%;
-        --card: 0 0% 100%;
-        --card-foreground: 222.2 47.4% 11.2%;
-        --popover: 0 0% 100%;
-        --popover-foreground: 222.2 47.4% 11.2%;
-        --primary: 221.2 83.2% 53.3%;
-        --primary-foreground: 210 40% 98%;
-        --secondary: 210 40% 96.1%;
-        --secondary-foreground: 222.2 47.4% 11.2%;
-        --muted: 210 40% 96.1%;
-        --muted-foreground: 215.4 16.3% 46.9%;
-        --accent: 210 40% 96.1%;
-        --accent-foreground: 222.2 47.4% 11.2%;
-        --destructive: 0 84.2% 60.2%;
-        --destructive-foreground: 210 40% 98%;
-        --border: 214.3 31.8% 91.4%;
-        --input: 214.3 31.8% 91.4%;
-        --ring: 221.2 83.2% 53.3%;
-        --chart-1: 221.2 83.2% 53.3%;
-        --chart-2: 212 95% 68%;
-        --chart-3: 216 92% 60%;
-        --chart-4: 210 98% 78%;
-        --chart-5: 212 97% 87%;
-        --radius: 0.75rem;
-    }
+
+  /* ========== LIGHT THEME ========== */
+  :root,
+  .light {
+    /* Background & Foreground */
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
+
+    /* Card */
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
+
+    /* Popover */
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+
+    /* Primary - Vibrant Blue */
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+
+    /* Secondary */
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    /* Muted */
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    /* Accent - Purple Touch */
+    --accent: 270 60% 96%;
+    --accent-foreground: 270 60% 20%;
+
+    /* Destructive */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Border, Input, Ring */
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+
+    /* Chart Colors */
+    --chart-1: 221.2 83.2% 53.3%;
+    --chart-2: 212 95% 68%;
+    --chart-3: 216 92% 60%;
+    --chart-4: 210 98% 78%;
+    --chart-5: 212 97% 87%;
+
+    --radius: 0.75rem;
+  }
+
+  /* ========== DARK THEME ========== */
   .dark {
-        --background: 224 71% 4%;
-        --foreground: 213 31% 91%;
-        --card: 224 71% 4%;
-        --card-foreground: 213 31% 91%;
-        --popover: 224 71% 4%;
-        --popover-foreground: 215 20.2% 65.1%;
-        --primary: 210 40% 98%;
-        --primary-foreground: 222.2 47.4% 1.2%;
-        --secondary: 222.2 47.4% 11.2%;
-        --secondary-foreground: 210 40% 98%;
-        --muted: 223 47% 11%;
-        --muted-foreground: 215.4 16.3% 56.9%;
-        --accent: 216 34% 17%;
-        --accent-foreground: 210 40% 98%;
-        --destructive: 0 63% 31%;
-        --destructive-foreground: 210 40% 98%;
-        --border: 216 34% 17%;
-        --input: 216 34% 17%;
-        --ring: 216 34% 17%;
-        --chart-1: 221 83% 53%;
-        --chart-2: 212 95% 68%;
-        --chart-3: 216 92% 60%;
-        --chart-4: 210 98% 78%;
-        --chart-5: 212 97% 87%;
-    }
+    /* Background & Foreground - Deep Space */
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+
+    /* Card - Elevated Surface */
+    --card: 222 47% 15%;
+    --card-foreground: 210 40% 98%;
+
+    /* Popover */
+    --popover: 222 47% 11%;
+    --popover-foreground: 215 20.2% 65.1%;
+
+    /* Primary - Electric Blue */
+    --primary: 217 91% 60%;
+    --primary-foreground: 222 47% 11%;
+
+    /* Secondary */
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+
+    /* Muted */
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    /* Accent - Vibrant Purple */
+    --accent: 270 70% 60%;
+    --accent-foreground: 210 40% 98%;
+
+    /* Destructive */
+    --destructive: 0 62.8% 50.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Border, Input, Ring */
+    --border: 217 33% 22%;
+    --input: 217 33% 22%;
+    --ring: 217 91% 60%;
+
+    /* Chart Colors - Vibrant */
+    --chart-1: 217 91% 60%;
+    --chart-2: 173 80% 55%;
+    --chart-3: 280 85% 65%;
+    --chart-4: 340 82% 52%;
+    --chart-5: 48 96% 53%;
+  }
+
+  /* ========== OCEAN THEME ========== */
+  .ocean {
+    /* Background - Deep Ocean */
+    --background: 200 80% 8%;
+    --foreground: 180 25% 95%;
+
+    /* Card */
+    --card: 200 70% 12%;
+    --card-foreground: 180 25% 95%;
+
+    /* Popover */
+    --popover: 200 80% 8%;
+    --popover-foreground: 180 25% 80%;
+
+    /* Primary - Aqua Glow */
+    --primary: 180 85% 55%;
+    --primary-foreground: 200 80% 8%;
+
+    /* Secondary */
+    --secondary: 195 60% 18%;
+    --secondary-foreground: 180 25% 95%;
+
+    /* Muted */
+    --muted: 195 60% 18%;
+    --muted-foreground: 180 25% 70%;
+
+    /* Accent - Teal */
+    --accent: 165 75% 50%;
+    --accent-foreground: 200 80% 8%;
+
+    /* Destructive */
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 180 25% 95%;
+
+    /* Border, Input, Ring */
+    --border: 195 60% 22%;
+    --input: 195 60% 22%;
+    --ring: 180 85% 55%;
+
+    /* Chart Colors */
+    --chart-1: 180 85% 55%;
+    --chart-2: 165 75% 50%;
+    --chart-3: 195 80% 60%;
+    --chart-4: 210 85% 65%;
+    --chart-5: 170 70% 45%;
+  }
+
+  /* ========== SUNSET THEME ========== */
+  .sunset {
+    /* Background - Warm Dusk */
+    --background: 25 60% 12%;
+    --foreground: 30 25% 95%;
+
+    /* Card */
+    --card: 25 55% 16%;
+    --card-foreground: 30 25% 95%;
+
+    /* Popover */
+    --popover: 25 60% 12%;
+    --popover-foreground: 30 25% 85%;
+
+    /* Primary - Sunset Orange */
+    --primary: 15 90% 60%;
+    --primary-foreground: 25 60% 12%;
+
+    /* Secondary */
+    --secondary: 30 50% 20%;
+    --secondary-foreground: 30 25% 95%;
+
+    /* Muted */
+    --muted: 30 50% 20%;
+    --muted-foreground: 30 25% 70%;
+
+    /* Accent - Rose Gold */
+    --accent: 340 75% 60%;
+    --accent-foreground: 25 60% 12%;
+
+    /* Destructive */
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 30 25% 95%;
+
+    /* Border, Input, Ring */
+    --border: 30 50% 24%;
+    --input: 30 50% 24%;
+    --ring: 15 90% 60%;
+
+    /* Chart Colors */
+    --chart-1: 15 90% 60%;
+    --chart-2: 340 75% 60%;
+    --chart-3: 30 80% 50%;
+    --chart-4: 350 85% 55%;
+    --chart-5: 20 85% 65%;
+  }
+
+  /* ========== FOREST THEME ========== */
+  .forest {
+    /* Background - Deep Forest */
+    --background: 140 50% 10%;
+    --foreground: 120 15% 95%;
+
+    /* Card */
+    --card: 140 45% 14%;
+    --card-foreground: 120 15% 95%;
+
+    /* Popover */
+    --popover: 140 50% 10%;
+    --popover-foreground: 120 15% 85%;
+
+    /* Primary - Emerald */
+    --primary: 145 75% 50%;
+    --primary-foreground: 140 50% 10%;
+
+    /* Secondary */
+    --secondary: 135 40% 18%;
+    --secondary-foreground: 120 15% 95%;
+
+    /* Muted */
+    --muted: 135 40% 18%;
+    --muted-foreground: 120 15% 70%;
+
+    /* Accent - Lime */
+    --accent: 85 80% 55%;
+    --accent-foreground: 140 50% 10%;
+
+    /* Destructive */
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 120 15% 95%;
+
+    /* Border, Input, Ring */
+    --border: 135 40% 22%;
+    --input: 135 40% 22%;
+    --ring: 145 75% 50%;
+
+    /* Chart Colors */
+    --chart-1: 145 75% 50%;
+    --chart-2: 85 80% 55%;
+    --chart-3: 160 70% 45%;
+    --chart-4: 120 65% 55%;
+    --chart-5: 100 75% 60%;
+  }
 }
-
-
 
 @layer base {
   * {
     @apply border-border;
-    }
+  }
+
   body {
     @apply bg-background text-foreground;
-    }
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+}
+
+/* ========== CUSTOM ANIMATIONS ========== */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes glow {
+
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ========== UTILITY CLASSES ========== */
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-glow {
+    animation: glow 3s ease-in-out infinite;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 3s linear infinite;
+  }
+
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient 8s ease infinite;
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .glass-strong {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(to right,
+        hsl(var(--primary)),
+        hsl(var(--accent)));
+  }
+
+  .text-gradient-animate {
+    @apply bg-clip-text text-transparent animate-gradient;
+    background-image: linear-gradient(90deg,
+        hsl(var(--primary)),
+        hsl(var(--accent)),
+        hsl(var(--primary)));
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:scale-105 hover:shadow-2xl;
+  }
+
+  .glow-primary {
+    box-shadow: 0 0 30px hsl(var(--primary) / 0.3);
+  }
+
+  .glow-accent {
+    box-shadow: 0 0 30px hsl(var(--accent) / 0.3);
+  }
+}
+
+/* ========== SECTION SPACING ========== */
+section {
+  @apply py-20 px-6;
+}
+
+@media (max-width: 768px) {
+  section {
+    @apply py-12 px-4;
+  }
 }

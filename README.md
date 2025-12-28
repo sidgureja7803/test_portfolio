@@ -1,70 +1,206 @@
-# Getting Started with Create React App
+# 🚀 Siddhant Gureja - Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, responsive, and beautifully designed portfolio showcasing my work as a Full Stack Developer. Built with React.js and featuring cutting-edge UI/UX design with smooth animations, multiple theme options, and an elegant glassmorphic aesthetic.
 
-## Available Scripts
+[![Live Demo](https://img.shields.io/badge/Live-Demo-blue?style=for-the-badge)](https://sidgureja.dev/)
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-black?style=for-the-badge&logo=github)](https://github.com/sidgureja7803)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/sidgureja)
 
-In the project directory, you can run:
+## ✨ Features
 
-### `npm start`
+- **🎨 Multiple Theme Support**: Choose from Light, Dark, Ocean, Sunset, and Forest themes
+- **📱 Fully Responsive**: Optimized for all devices - desktop, tablet, and mobile
+- **🎭 Modern UI/UX**: Glassmorphism, smooth gradients, and micro-animations
+- **⚡ Performance Optimized**: Fast loading with lazy loading and code splitting
+- **🌟 Interactive Components**: Hover effects, animations, and smooth transitions
+- **📊 LeetCode Integration**: Real-time LeetCode stats and contest ratings
+- **🎯 SEO Optimized**: Proper meta tags, semantic HTML, and optimized content
+- **♿ Accessibility**: WCAG compliant with keyboard navigation support
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🛠️ Tech Stack
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Frontend
+- **Framework**: React.js 18.3.1
+- **Styling**: Tailwind CSS 3.4.17 + Custom CSS
+- **UI Components**: Radix UI + Shadcn/ui
+- **Routing**: React Router DOM 7.5.1
+- **Icons**: Lucide React 0.507.0
+- **Animations**: CSS animations + Tailwind transitions
 
-### `npm test`
+### Development Tools
+- **Build Tool**: Create React App with CRACO
+- **Package Manager**: Yarn 1.22.22
+- **Code Quality**: ESLint 9.23.0
+- **Version Control**: Git
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 📦 Installation & Setup
 
-### `npm run build`
+### Prerequisites
+- Node.js (v16 or higher)
+- Yarn or npm
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Quick Start
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+# Clone the repository
+git clone https://github.com/sidgureja7803/Portfolio.git
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Navigate to project directory
+cd Portfolio
 
-### `npm run eject`
+# Install dependencies
+yarn install
+# or
+npm install
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# Start development server
+yarn dev
+# or
+npm run dev
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The application will open at `http://localhost:3000`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Build for Production
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+# Create production build
+yarn build
+# or
+npm run build
+```
 
-## Learn More
+The optimized build will be in the `build/` directory.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 📁 Project Structure
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+Portfolio/
+├── public/                 # Static assets
+├── src/
+│   ├── assets/            # Images and media files
+│   ├── components/        # React components
+│   │   ├── ui/           # Reusable UI components (Shadcn)
+│   │   ├── About.js
+│   │   ├── Achievements.js
+│   │   ├── Contact.js
+│   │   ├── Experience.js
+│   │   ├── Footer.js
+│   │   ├── Header.js
+│   │   ├── Hero.js
+│   │   ├── LeetCodeStats.js
+│   │   ├── OpenSource.js
+│   │   ├── Projects.js
+│   │   └── Skills.js
+│   ├── contexts/          # React contexts
+│   │   └── ThemeContext.js
+│   ├── App.js            # Main app component
+│   ├── App.css           # App-specific styles
+│   ├── index.css         # Global styles & theme variables
+│   ├── mock.js           # Portfolio data
+│   └── index.js          # Entry point
+├── tailwind.config.js    # Tailwind configuration
+├── craco.config.js       # CRACO configuration
+└── package.json          # Dependencies
 
-### Code Splitting
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🎨 Available Themes
 
-### Analyzing the Bundle Size
+The portfolio includes **5 beautiful themes**:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+1. **🌞 Light** - Clean and professional
+2. **🌙 Dark** - Easy on the eyes
+3. **🌊 Ocean** - Deep blue vibes
+4. **🌅 Sunset** - Warm and inviting
+5. **🌲 Forest** - Natural greens
 
-### Making a Progressive Web App
+Switch themes using the theme selector in the header!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 📝 Customization Guide
 
-### Advanced Configuration
+### Update Personal Information
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Edit `src/mock.js` to update:
+- Personal info (name, email, bio)
+- Social links
+- Skills and technologies
+- Work experience
+- Projects
+- Achievements
 
-### Deployment
+### Modify Theme Colors
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Edit `src/index.css` to customize theme variables:
+```css
+:root {
+  --background: ...;
+  --foreground: ...;
+  --primary: ...;
+  /* etc */
+}
+```
 
-### `npm run build` fails to minify
+### Add New Sections
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Create component in `src/components/`
+2. Import in `src/App.js`
+3. Add to the main layout
+4. Update navigation in `Header.js`
+
+## 🚀 Featured Projects
+
+### CodeFusion
+🔗 [Live Demo](https://www.code-fusion.live/) | [GitHub](https://github.com/sidgureja7803/CollabCode.git)
+
+Real-time collaborative coding platform with AI-powered debugging using LLaMA API.
+
+### MergeMates
+🔗 [Live Demo](https://www.mergemates.site/) | [GitHub](https://github.com/sidgureja7803/MergeMates_client.git)
+
+A "Tinder for Developers" matching collaborators based on GitHub data.
+
+### LiveCV
+🔗 [Live Demo](https://livecv.online/) | [GitHub](https://github.com/sidgureja7803/LiveCV)
+
+AI-powered resume builder with real-time editing and PDF export.
+
+## 🏆 Achievements
+
+- 🥉 **3rd Prize** - IBM TechXchange AI & Automation Hackathon
+- 🥉 **3rd Place** - CodeSprint 2024, ACM TIET
+- 🏅 **LeetCode Guardian Badge** - 2213 contest rating
+- ☁️ **AWS Certified Cloud Practitioner**
+
+## 📊 LeetCode Stats
+
+- **Contest Rating**: 2213
+- **Problems Solved**: 300+
+- **Contests Participated**: 20+
+- **Global Rank**: Top percentile
+
+## 📬 Contact
+
+- **Email**: siddhantgureja39@gmail.com
+- **Phone**: +91 8193006167
+- **Location**: India
+- **LinkedIn**: [linkedin.com/in/sidgureja](https://linkedin.com/in/sidgureja)
+- **GitHub**: [github.com/sidgureja7803](https://github.com/sidgureja7803)
+- **Portfolio**: [sidgureja.dev](https://sidgureja.dev/)
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## 🙏 Acknowledgments
+
+- UI Components: [Shadcn/ui](https://ui.shadcn.com/)
+- Icons: [Lucide React](https://lucide.dev/)
+- Styling: [Tailwind CSS](https://tailwindcss.com/)
+- Framework: [React.js](https://react.dev/)
+
+---
+
+**Made with ❤️ by Siddhant Gureja**
+
+⭐ Star this repo if you found it helpful!
