@@ -1,12 +1,12 @@
 import React from 'react';
 import { Button } from './ui/button';
-import { ArrowDown, Download, ExternalLink } from 'lucide-react';
+import { ArrowRight, Download } from 'lucide-react';
 import { personalInfo, socialLinks } from '../mock';
 import ResumePDF from '../assets/Sidgureja.pdf';
 
 const Hero = () => {
-  const scrollToAbout = () => {
-    document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' });
+  const scrollToContact = () => {
+    document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const getSocialIcon = (iconName) => {
@@ -23,96 +23,75 @@ const Hero = () => {
             <path fillRule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clipRule="evenodd" />
           </svg>
         );
+      case 'twitter':
+        return (
+          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+          </svg>
+        );
       default:
-        return <ExternalLink className="w-5 h-5" />;
+        return null;
     }
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center pt-24 pb-16 px-6 relative overflow-hidden">
-      <div className="max-w-5xl mx-auto text-center space-y-10 relative z-10">
-        {/* Subtle Background Gradient */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-30">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-primary/20 to-transparent rounded-full blur-3xl"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-br from-primary/10 to-transparent rounded-full blur-3xl"></div>
-        </div>
-
+    <section className="min-h-screen flex items-center justify-center pt-32 pb-24 px-6">
+      <div className="max-w-4xl mx-auto w-full">
         {/* Main Content */}
-        <div className="space-y-8">
-          {/* Status Badge */}
-          <div className="inline-flex items-center px-5 py-2.5 rounded-full glass border border-border text-sm font-medium">
-            <span className="relative flex h-2.5 w-2.5 mr-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-foreground/60 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-foreground"></span>
-            </span>
-            <span className="text-foreground">Available for new opportunities</span>
-          </div>
-
+        <div className="space-y-12">
           {/* Name & Title */}
           <div className="space-y-6">
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tight leading-tight">
-              <span className="block text-foreground">
-                {personalInfo.name.split(' ')[0]}
-              </span>
-              <span className="block text-primary mt-2">
-                {personalInfo.name.split(' ')[1]}
-              </span>
+            <h1 className="text-6xl md:text-7xl lg:text-8xl font-semibold tracking-tight">
+              {personalInfo.name}
             </h1>
 
             <div className="space-y-4">
-              <p className="text-2xl sm:text-3xl font-medium text-foreground/90">
+              <p className="text-xl md:text-2xl text-muted-foreground font-medium">
                 {personalInfo.title}
               </p>
-              <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              <p className="text-base md:text-lg text-muted-foreground max-w-2xl leading-relaxed">
                 {personalInfo.tagline}
               </p>
             </div>
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+          <div className="flex flex-wrap items-center gap-4">
             <Button
               size="lg"
-              className="group px-8 py-6 font-medium text-base transition-all hover:scale-105"
-              onClick={scrollToAbout}
+              className="group px-6 py-3 font-medium"
+              onClick={scrollToContact}
             >
-              Explore My Work
-              <ArrowDown className="ml-2 h-5 w-5 group-hover:translate-y-0.5 transition-transform" />
+              Get in touch
+              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Button>
             <Button
               variant="outline"
               size="lg"
-              className="group px-8 py-6 font-medium text-base transition-all hover:scale-105"
+              className="group px-6 py-3 font-medium"
               asChild
             >
               <a href={ResumePDF} download="Siddhant_Gureja_Resume.pdf">
                 Download CV
-                <Download className="ml-2 h-5 w-5 group-hover:translate-y-0.5 transition-transform" />
+                <Download className="ml-2 h-4 w-4" />
               </a>
             </Button>
           </div>
 
           {/* Social Links */}
-          <div className="flex items-center justify-center gap-3 pt-6">
+          <div className="flex items-center gap-4 pt-4">
             {socialLinks.map((link, index) => (
               <a
                 key={index}
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3.5 rounded-lg glass hover:glass-strong border border-border text-muted-foreground hover:text-primary transition-all duration-200 hover:scale-110"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+                aria-label={link.name}
               >
                 {getSocialIcon(link.icon)}
-                <span className="sr-only">{link.name}</span>
               </a>
             ))}
-          </div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-          <div className="w-6 h-10 border-2 border-muted-foreground/30 rounded-full flex justify-center p-2">
-            <div className="w-1.5 h-3 bg-muted-foreground/50 rounded-full"></div>
           </div>
         </div>
       </div>
