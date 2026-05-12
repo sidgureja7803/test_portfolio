@@ -1,10 +1,9 @@
-# 🚀 Siddhant Gureja - Portfolio
+# 🚀 Gunheer Kaur - Portfolio
 
-A modern, responsive, and beautifully designed portfolio showcasing my work as a Full Stack Developer. Built with React.js and featuring cutting-edge UI/UX design with smooth animations, multiple theme options, and an elegant glassmorphic aesthetic.
+A modern, responsive, and beautifully designed portfolio showcasing my work as a Full Stack and AI Developer. Built with React.js and featuring cutting-edge UI/UX design with smooth animations, multiple theme options, and an elegant glassmorphic aesthetic.
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-blue?style=for-the-badge)](https://sidgureja.dev/)
-[![GitHub](https://img.shields.io/badge/GitHub-Repository-black?style=for-the-badge&logo=github)](https://github.com/sidgureja7803)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/sidgureja)
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-black?style=for-the-badge&logo=github)](https://github.com/gunheerahuja)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/gunheer)
 
 ## ✨ Features
 
@@ -48,7 +47,7 @@ A modern, responsive, and beautifully designed portfolio showcasing my work as a
 
 ```bash
 # Clone the repository
-git clone https://github.com/sidgureja7803/Portfolio.git
+git clone https://github.com/gunheerahuja/Portfolio.git
 
 # Navigate to project directory
 cd Portfolio
@@ -155,43 +154,40 @@ Edit `src/index.css` to customize theme variables:
 
 ## 🚀 Featured Projects
 
+### Insightify
+🔗 [GitHub](https://github.com/gunheerahuja)
+
+AI-Powered YouTube Chat Platform using React, Node.js, LangChain, and Vector DB.
+
 ### CodeFusion
-🔗 [Live Demo](https://www.code-fusion.live/) | [GitHub](https://github.com/sidgureja7803/CollabCode.git)
+🔗 [Live Demo](https://www.code-fusion.live/) | [GitHub](https://github.com/gunheerahuja)
 
 Real-time collaborative coding platform with AI-powered debugging using LLaMA API.
 
-### MergeMates
-🔗 [Live Demo](https://www.mergemates.site/) | [GitHub](https://github.com/sidgureja7803/MergeMates_client.git)
+### QueryCraft
+🔗 [Live Demo](https://streamlit.io/) | [GitHub](https://github.com/gunheerahuja)
 
-A "Tinder for Developers" matching collaborators based on GitHub data.
-
-### LiveCV
-🔗 [Live Demo](https://livecv.online/) | [GitHub](https://github.com/sidgureja7803/LiveCV)
-
-AI-powered resume builder with real-time editing and PDF export.
+Natural Language SQL Generator built with Streamlit, SQLite, LangChain, and LLMs.
 
 ## 🏆 Achievements
 
-- 🥉 **3rd Prize** - IBM TechXchange AI & Automation Hackathon
-- 🥉 **3rd Place** - CodeSprint 2024, ACM TIET
-- 🏅 **LeetCode Guardian Badge** - 2213 contest rating
-- ☁️ **AWS Certified Cloud Practitioner**
+- 🏆 **Finalist** - Myntra Hackerramp 2024
+- 🏅 **LeetCode Knight Badge** - Consistent Top 4% ranking in Weekly Contests
+- 📈 **Graph Theory Programming Excellence** - 2nd place winner in AlgoUniversity competition
 
 ## 📊 LeetCode Stats
 
-- **Contest Rating**: 2213
-- **Problems Solved**: 300+
-- **Contests Participated**: 20+
-- **Global Rank**: Top percentile
+- **Contest Rating**: 1900+
+- **Badges**: Knight
+- **Global Rank**: Top 4%
 
 ## 📬 Contact
 
-- **Email**: siddhantgureja39@gmail.com
-- **Phone**: +91 8193006167
-- **Location**: India
-- **LinkedIn**: [linkedin.com/in/sidgureja](https://linkedin.com/in/sidgureja)
-- **GitHub**: [github.com/sidgureja7803](https://github.com/sidgureja7803)
-- **Portfolio**: [sidgureja.dev](https://sidgureja.dev/)
+- **Email**: gunheerahuja@gmail.com
+- **Phone**: +91 7009734180
+- **Location**: Punjab, India
+- **LinkedIn**: [linkedin.com/in/gunheer](https://linkedin.com/in/gunheer)
+- **GitHub**: [github.com/gunheerahuja](https://github.com/gunheerahuja)
 
 ## 📄 License
 
