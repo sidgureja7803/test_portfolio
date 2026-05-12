@@ -8,37 +8,37 @@ import { Code, Palette, Database, Wrench, Brain } from 'lucide-react';
 const Skills = () => {
   const skillCategories = [
     {
-      title: "Frontend Development",
+      title: "Programming",
       icon: Code,
-      skills: skills.frontend,
+      skills: skills.programming || [],
       color: "text-blue-500",
       bgColor: "bg-blue-500/10"
     },
     {
-      title: "UI/UX & Styling", 
+      title: "Frontend Development", 
       icon: Palette,
-      skills: skills.styling,
+      skills: skills.frontend || [],
       color: "text-purple-500",
       bgColor: "bg-purple-500/10"
     },
     {
       title: "Backend & Database",
       icon: Database, 
-      skills: skills.backend,
+      skills: [...(skills.backend || []), ...(skills.databases || [])],
       color: "text-green-500",
       bgColor: "bg-green-500/10"
     },
     {
       title: "Tools & Platforms",
       icon: Wrench,
-      skills: skills.tools,
+      skills: skills.tools || [],
       color: "text-orange-500", 
       bgColor: "bg-orange-500/10"
     },
     {
-      title: "AI & Modern Tools",
+      title: "AI & Core Subjects",
       icon: Brain,
-      skills: skills.ai,
+      skills: [...(skills.ai || []), ...(skills.core || [])],
       color: "text-pink-500",
       bgColor: "bg-pink-500/10"
     }
