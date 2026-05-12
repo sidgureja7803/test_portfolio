@@ -49,13 +49,12 @@ const Footer = () => {
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <div className="w-8 h-8 bg-gradient-to-br from-primary to-primary/70 rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-sm">R</span>
+                <span className="text-primary-foreground font-bold text-sm">GK</span>
               </div>
-              <span className="font-semibold text-lg tracking-tight">Siddhant Gureja</span>
+              <span className="font-semibold text-lg tracking-tight">{personalInfo.name}</span>
             </div>
             <p className="text-muted-foreground leading-relaxed max-w-xs">
-              Front End Developer specializing in React.js and modern web technologies. 
-              Creating exceptional digital experiences.
+              {personalInfo.title}. {personalInfo.tagline}
             </p>
             <div className="flex space-x-4 pt-2">
               {socialLinks.map((link, index) => (
@@ -130,7 +129,7 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             {/* Copyright */}
             <div className="flex items-center text-sm text-muted-foreground">
-              <span>© {currentYear} Siddhant Gureja. Made with</span>
+              <span>© {currentYear} {personalInfo.name}. Made with</span>
               <Heart className="w-4 h-4 mx-1 text-red-500 animate-pulse" />
               <span>and</span>
               <Code className="w-4 h-4 mx-1 text-blue-500" />

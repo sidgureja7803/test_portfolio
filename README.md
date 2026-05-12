@@ -206,6 +206,6 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
-**Made with ❤️ by Siddhant Gureja**
+**Made with ❤️ by Gunheer Kaur**
 
 ⭐ Star this repo if you found it helpful!

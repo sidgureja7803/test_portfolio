@@ -31,13 +31,15 @@ const Projects = () => {
               className="group overflow-hidden hover:shadow-lg transition-shadow duration-300"
             >
               {/* Project Image */}
-              <div className="relative aspect-video overflow-hidden bg-muted">
-                <img 
-                  src={project.image} 
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </div>
+              {project.image && (
+                <div className="relative aspect-video overflow-hidden bg-muted">
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+              )}
 
               {/* Project Content */}
               <div className="p-6 space-y-4">
@@ -101,7 +103,7 @@ const Projects = () => {
               Check out my GitHub for more projects and open-source contributions
             </p>
             <Button 
-              onClick={() => window.open('https://github.com/sidgureja7803', '_blank')}
+              onClick={() => window.open('https://github.com/gunheerahuja', '_blank')}
             >
               <Github className="w-4 h-4 mr-2" />
               View GitHub Profile

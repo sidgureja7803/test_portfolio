@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from './ui/button';
 import { ArrowRight, Download } from 'lucide-react';
 import { personalInfo, socialLinks } from '../mock';
-import ResumePDF from '../assets/Sidgureja.pdf';
+import ResumePDF from '../assets/GunheerKaur.pdf';
 
 const Hero = () => {
   const scrollToContact = () => {
@@ -41,12 +41,12 @@ const Hero = () => {
         <div className="space-y-12">
           {/* Name & Title */}
           <div className="space-y-6">
-            <h1 className="text-6xl md:text-7xl lg:text-8xl font-semibold tracking-tight">
+            <h1 className="text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight text-gradient pb-2">
               {personalInfo.name}
             </h1>
 
             <div className="space-y-4">
-              <p className="text-xl md:text-2xl text-muted-foreground font-medium">
+              <p className="text-xl md:text-2xl font-semibold text-primary">
                 {personalInfo.title}
               </p>
               <p className="text-base md:text-lg text-muted-foreground max-w-2xl leading-relaxed">
@@ -71,7 +71,7 @@ const Hero = () => {
               className="group px-6 py-3 font-medium"
               asChild
             >
-              <a href={ResumePDF} download="Siddhant_Gureja_Resume.pdf">
+              <a href={ResumePDF} download="Gunheer_Kaur_Resume.pdf" className="flex items-center">
                 Download CV
                 <Download className="ml-2 h-4 w-4" />
               </a>
