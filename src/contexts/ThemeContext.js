@@ -48,9 +48,9 @@ export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(() => {
     if (typeof window !== 'undefined') {
       const savedTheme = localStorage.getItem('theme');
-      return themes[savedTheme] ? savedTheme : 'dark'; // default to dark
+      return themes[savedTheme] ? savedTheme : 'light'; // default to stark light
     }
-    return 'dark';
+    return 'light';
   });
 
   useEffect(() => {

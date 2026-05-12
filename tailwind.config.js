@@ -8,7 +8,7 @@ module.exports = {
   theme: {
   	extend: {
   		fontFamily: {
-  			sans: ['Outfit', 'sans-serif'],
+  			sans: ['Inter', 'sans-serif'],
   			mono: ['JetBrains Mono', 'monospace'],
   		},
   		borderRadius: {

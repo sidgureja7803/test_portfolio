@@ -1,138 +1,38 @@
 import React from 'react';
-import { Card } from './ui/card';
-import { Badge } from './ui/badge';
-import { Progress } from './ui/progress';
 import { skills } from '../mock';
-import { Code, Palette, Database, Wrench, Brain } from 'lucide-react';
 
 const Skills = () => {
-  const skillCategories = [
-    {
-      title: "Programming",
-      icon: Code,
-      skills: skills.programming || [],
-      color: "text-blue-500",
-      bgColor: "bg-blue-500/10"
-    },
-    {
-      title: "Frontend Development", 
-      icon: Palette,
-      skills: skills.frontend || [],
-      color: "text-purple-500",
-      bgColor: "bg-purple-500/10"
-    },
-    {
-      title: "Backend & Database",
-      icon: Database, 
-      skills: [...(skills.backend || []), ...(skills.databases || [])],
-      color: "text-green-500",
-      bgColor: "bg-green-500/10"
-    },
-    {
-      title: "Tools & Platforms",
-      icon: Wrench,
-      skills: skills.tools || [],
-      color: "text-orange-500", 
-      bgColor: "bg-orange-500/10"
-    },
-    {
-      title: "AI & Core Subjects",
-      icon: Brain,
-      skills: [...(skills.ai || []), ...(skills.core || [])],
-      color: "text-pink-500",
-      bgColor: "bg-pink-500/10"
-    }
-  ];
-
-  const topSkills = [
-    { name: "React.js", level: 95 },
-    { name: "JavaScript", level: 90 },
-    { name: "TypeScript", level: 85 },
-    { name: "Node.js", level: 80 },
-    { name: "Tailwind CSS", level: 95 },
-    { name: "MongoDB", level: 75 }
-  ];
+  // Deduplicate and flatten skills
+  const allSkills = Array.from(new Set([
+    ...(skills.programming || []),
+    ...(skills.frontend || []),
+    ...(skills.backend || []),
+    ...(skills.databases || []),
+    ...(skills.tools || []),
+    ...(skills.ai || []),
+    ...(skills.core || [])
+  ]));
 
   return (
-    <section id="skills" className="py-24 px-6 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-10 w-64 h-64 bg-gradient-to-br from-blue-500/10 to-transparent rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-10 w-80 h-80 bg-gradient-to-br from-purple-500/10 to-transparent rounded-full blur-3xl"></div>
-      </div>
-      
-      <div className="max-w-6xl mx-auto relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-16 space-y-4">
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20">
-            <Code className="w-4 h-4 mr-2 text-blue-500" />
-            <span className="text-sm font-medium text-foreground">Expertise</span>
-          </div>
-          <h2 className="text-3xl md:text-4xl font-light tracking-tight">
-            Technical <span className="font-normal bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">Skills</span>
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-lg leading-relaxed">
-            Proficient in modern technologies and frameworks for building scalable web applications
-          </p>
+    <section id="skills" className="py-32 px-6">
+      <div className="max-w-6xl mx-auto">
+        <div className="mb-12 border-b border-border pb-4">
+          <span className="text-xs md:text-sm font-medium text-muted-foreground uppercase tracking-wider">
+            Skills & Tools
+          </span>
         </div>
-
-        {/* Skills Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {skillCategories.map((category, index) => {
-            const IconComponent = category.icon;
-            return (
-              <Card 
-                key={index} 
-                className="p-6 border-0 shadow-lg hover:shadow-2xl transition-all duration-300 group bg-card/50 backdrop-blur-sm hover:-translate-y-1 relative overflow-hidden"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                {/* Decorative corner */}
-                <div className={`absolute top-0 right-0 w-20 h-20 ${category.bgColor} rounded-bl-full transform translate-x-10 -translate-y-10 group-hover:scale-150 transition-transform opacity-50`}></div>
-                
-                <div className="flex items-center mb-4 relative z-10">
-                  <div className={`w-10 h-10 rounded-lg ${category.bgColor} flex items-center justify-center mr-3 group-hover:scale-110 transition-transform`}>
-                    <IconComponent className={`w-5 h-5 ${category.color}`} />
-                  </div>
-                  <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">
-                    {category.title}
-                  </h3>
-                </div>
-                
-                <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill, skillIndex) => (
-                    <Badge 
-                      key={skillIndex} 
-                      variant="secondary" 
-                      className="text-xs hover:bg-accent/80 transition-colors cursor-default"
-                    >
-                      {skill}
-                    </Badge>
-                  ))}
-                </div>
-              </Card>
-            );
-          })}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+          {allSkills.map((skill, index) => (
+            <div 
+              key={index}
+              className="aspect-square flex items-center justify-center p-6 bg-muted/10 border border-border/50 hover:bg-muted/30 transition-colors duration-300 rounded-lg"
+            >
+              <span className="text-sm md:text-base font-medium text-center text-foreground/80">
+                {skill}
+              </span>
+            </div>
+          ))}
         </div>
-
-        {/* Top Skills Progress */}
-        <Card className="p-8 border-0 shadow-lg bg-gradient-to-br from-accent/20 to-primary/5 backdrop-blur-sm">
-          <h3 className="text-xl font-semibold mb-8 text-center">Proficiency Levels</h3>
-          
-          <div className="grid md:grid-cols-2 gap-8">
-            {topSkills.map((skill, index) => (
-              <div key={index} className="space-y-3">
-                <div className="flex justify-between items-center">
-                  <span className="font-medium text-foreground">{skill.name}</span>
-                  <span className="text-sm text-muted-foreground">{skill.level}%</span>
-                </div>
-                <Progress 
-                  value={skill.level} 
-                  className="h-2 bg-background/50"
-                />
-              </div>
-            ))}
-          </div>
-        </Card>
       </div>
     </section>
   );
